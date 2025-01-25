@@ -11,7 +11,7 @@
         <h1>URL SHORTNER</h1>
         <form action="/shortUrls" method="post" class="my-4">
             <label  for="fullurl" class="sr-only">URL: </label>
-            <input type="url" name="fullurl" id="fullurl" placeholder="URL" required class="form-control mr-2">
+            <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" required class="form-control mr-2">
             <button type="submit">submit</button>
         </form>
 
@@ -24,12 +24,13 @@
                 </tr>
             </thead>
             <tbody>
+                <% shortUrls.forEach(shortUrl => { %>
                 <tr>
-                    <td><a href="https://www.youtube.com/watch?v=SLpUKAGnm-g&t=562s">https://www.youtube.com/watch?v=SLpUKAGnm-g&t=562s</a>
-                    </td>
-                    <td><a href="#">sdfsdfsdg</a></td>
-                    <td>10</td>
+                    <td><a href="<%= shortUrl.full %>"> <%= shortUrl.full %> </a></td>
+                    <td><a href="<%= shortUrl.short %>"> <%= shortUrl.short %> </a></td>
+                    <td><%= shortUrl.clicks %></td>
                 </tr>
+                <% }) %>
             </tbody>
         </table>
     </div>
