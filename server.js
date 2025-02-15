@@ -31,6 +31,16 @@ app.get("/:shortUrl", async (req, res) => {
     res.redirect(shortUrl.full);
 })
 
+app.post("/delete/:id", async (req, res) => {
+    try {
+        await ShortUrl.findByIdAndDelete(req.params.id);
+        res.redirect("/");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error deleting URL");
+    }
+});
+
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
 })

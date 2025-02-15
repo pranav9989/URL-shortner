@@ -26,9 +26,14 @@
             <tbody>
                 <% shortUrls.forEach(shortUrl => { %>
                 <tr>
-                    <td><a href="<%= shortUrl.full %>"> <%= shortUrl.full %> </a></td>
-                    <td><a href="<%= shortUrl.short %>"> <%= shortUrl.short %> </a></td>
+                    <td><a href="<%= shortUrl.full %>" target="_blank"> <%= shortUrl.full %> </a></td>
+                    <td><a href="/<%= shortUrl.short %>" target="_blank"> <%= shortUrl.short %> </a></td>
                     <td><%= shortUrl.clicks %></td>
+                    <td>
+                        <form action="/delete/<%= shortUrl._id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this URL?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <% }) %>
             </tbody>
